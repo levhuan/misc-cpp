@@ -69,7 +69,7 @@ int numberOfPathsAt(int a[][1001], VisitedNode b[][1001],
         result += numberOfPathsAt(a, b, row, col, cur_row + 1, cur_col);
 
     b[cur_row][cur_col].visited = true;
-    return result % MAX_PATHS;
+    return result;
 }
 
 int numberOfPaths(int a[][1001], int row, int col) {
@@ -105,7 +105,7 @@ int numberOfPaths(int a[][1001], int row, int col) {
     }
 
     int result = numberOfPathsAt(a, b, row - 1, col - 1, cur_row, cur_col);
-    return result;
+    return result % MAX_PATHS;
 }
 
 int main(int argc, char **argv) {
@@ -117,7 +117,6 @@ int main(int argc, char **argv) {
     for (int i = 0; i < row; i++) {
         for (int j = 0; j < col; j++) {
             cin >> input;
-            cout << " " << input;
             array[i][j] = input;
         }
     }

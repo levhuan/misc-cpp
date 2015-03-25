@@ -5,11 +5,13 @@ using namespace std;
 static const int MAX_PATHS = 1000000009;
 
 void debug_print(int a[][1001], int row, int col) {
+#ifdef DEBUG_PRINT
     for (int x = 0; x < row; x++) {
         for (int y = 0; y < col; y++) 
             cout << " " << a[x][y];
         cout << endl;
     }
+#endif
 }
 
 int numberOfPaths(int a[][1001], int row, int col) {
@@ -42,9 +44,6 @@ int numberOfPaths(int a[][1001], int row, int col) {
 
     }
 
-    debug_print(a, row, col);
-    debug_print(b, row, col);
-
     /*!
      * Calculate the number of path from x,y to (row,col) using
      *       N(x, y) = N(x+1,y) + N(x, y+1);
@@ -59,6 +58,7 @@ int numberOfPaths(int a[][1001], int row, int col) {
         }
     }
     
+    debug_print(a, row, col);
     debug_print(b, row, col);
     return b[0][0] % MAX_PATHS;
 }

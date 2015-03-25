@@ -1,2 +1,2 @@
 # misc-cpp
-Miscellaneous C++ coding test
+Miscellaneous C++ coding exercise 

@@ -44,6 +44,10 @@ int numberOfPaths(int a[][1001], int row, int col) {
 
     }
 
+    /*! optimize for the special case */
+    if (!b[row-1][col-2]  && !b[row-2][col-1])
+        return 0;
+
     /*!
      * Calculate the number of path from x,y to (row,col) using
      *       N(x, y) = N(x+1,y) + N(x, y+1);

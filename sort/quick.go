@@ -1,5 +1,8 @@
 /*
  * Block-style comment is for the package documentation.
+ *
+ * Quick sort algorithm, implemented in GO. GO "slice" makes in-place sorting
+ * implementation very simple and elegant. 
  * 
  * Huan Le, mr.huanle@gmail.com 
  */
@@ -22,15 +25,16 @@ var (
 )
 
 /*
- * Quick merge functions.
- * Quick merge includes:
+ * Quick sort functions.
+ * Quick sort includes:
  * - selectPivot
  * - partitions:
  * - recurse the left partition
  * - recurse the right partition
  */
 
-// moveToLeft moves "from" to the left of "pivot"
+// moveToLeft moves "from" to the immediate left of "pivot" and return
+// the new pivot index
 func moveToLeft(input []int, pivot, from int) int {
 	temp := input[from]
 	input[from] = input[pivot + 1]
@@ -39,7 +43,8 @@ func moveToLeft(input []int, pivot, from int) int {
 	return pivot + 1
 }
 
-// moveToRight moves "from" to the right of "pivot"
+// moveToRight moves "from" to the immediate right of "pivot" and 
+// return the new pivot index
 func moveToRight(input []int, pivot, from int) int {
 	temp := input[from]
 	input[from] = input[pivot-1]
@@ -115,7 +120,7 @@ func Quick(input []int) {
 }
 
 // RSelect returns the i'th order value in the input array
-// (after sorted)
+// where i: 0-based value
 //
 func RSelect(input []int, order int) int {
 

@@ -1,0 +1,19 @@
+
+
+Create veth pair:
+ip link add name <> type veth peer name <>
+
+Bring the interface up in a namespace: (nsexec is an setns example)
+nsexec /proc/<pid>/ns/net ip link set <> up
+nsexec /proc/<pid>/ns/net ip addr add <ipaddr> dev <veth->
+
+Transfer an interface from one namespace to another namespace:
+ip link set dev ${ifname-orig} netns ${namespace-pid}
+
+Rename an interface:
+ip link set dev ${old interface name} name ${new interface name}
+
+Change MAC address:
+ip link set dev ${interface name} address ${address}
+
+ip netns exec <net-namespace> <command ...>
